@@ -15,6 +15,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 import { environment } from '../environments/environment'
 
+import { AngularFireModule } from '@angular/fire'
+import { AngularFireDatabaseModule } from '@angular/fire/database'
+import { AngularFireAuth } from '@angular/fire/auth';
+
 
 @NgModule({
   declarations: [
@@ -32,10 +36,11 @@ import { environment } from '../environments/environment'
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [AngularFireAuth],
   bootstrap: [AppComponent]
-  //exports:[FormsModule],
 })
 export class AppModule { }

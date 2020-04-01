@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -8,7 +12,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public afAuth: AngularFireAuth,
+    private router: Router
+    ) { }
+
+  onLoginGoogle() {
+    this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+    this.router.navigate(['admin/list-books'])
+  }
+  
+  onLogout() {
+    this.afAuth.auth.signOut();
+  }
 
   ngOnInit(): void {
   }

@@ -1,1 +1,2 @@
 npm i bootstrap jquery popper.js -S
+npm i font-awesome -S
